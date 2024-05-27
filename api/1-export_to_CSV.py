@@ -10,16 +10,20 @@ def list_completed_tasks(todo_data):
     """Count n of completed tasks"""
     return [task for task in todo_data if task["completed"]]
 
+
 def get_todo_list_titles(todo_data):
     return [task['title'] for task in todo_data]
 
+
 def todo_list_task_status(todo_data):
     return [task['completed'] for task in todo_data]
+
 
 def save_to_csv(filename, employee_todos):
     with open(filename, mode="w", newline="") as f:
         writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         writer.writerows(employee_todos)
+
 
 def main():
     id = sys.argv[1]
@@ -48,7 +52,7 @@ def main():
             employee_todos.append(record)
 
         csv_file_name = f"{id}.csv"
- 
+
         save_to_csv(csv_file_name, employee_todos)
 
     except requests.RequestException as e:
