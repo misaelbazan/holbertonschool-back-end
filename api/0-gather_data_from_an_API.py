@@ -10,26 +10,32 @@ def list_completed_tasks(todo_data):
     return [task for task in todo_data if task["completed"]]
 
 
-try:
-    employee_id = sys.argv[1]
-    # Fetching user data
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    user_response = requests.get(user_url)
-    user_data = user_response.json()
+def main():
+    id = sys.argv[1]
+    try:
+        # Fetching user data
+        user_url = f"https://jsonplaceholder.typicode.com/users/{id}"
+        user_response = requests.get(user_url)
+        user_data = user_response.json()
 
-    # Fetching todos data
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId=\
-                {employee_id}"
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
+        # Fetching todos data
+        todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={id}"
+        todos_response = requests.get(todos_url)
+        todos_data = todos_response.json()
 
-    completed_tasks = list_completed_tasks(todos_data)
-    number_completed_tasks = len(completed_tasks)
-    total_tasks = len(todos_data)
+        EMPLOYEE_NAME = user_data['name']
+        completed_tasks = list_completed_tasks(todos_data)
+        NUMBER_OF_DONE_TASKS = len(completed_tasks)
+        TOTAL_NUMBER_OF_TASKS = len(todos_data)
 
-    print(f"Employee {user_data['name']} is done with tasks\
-         ({number_completed_tasks}/{total_tasks}):")
-    for task in completed_tasks:
-        print(f"\t{task['title']}")
-except requests.RequestException as e:
-    print("Error happened during execution", e)
+        print(f"Employee {EMPLOYEE_NAME} is done with tasks\
+            ({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
+        for task in completed_tasks:
+            TASK_TITLE = task['title']
+            print(f"\t{TASK_TITLE}")
+    except requests.RequestException as e:
+        print("Error happened during execution", e)
+
+
+if __name__ == "__main__":
+    main()
