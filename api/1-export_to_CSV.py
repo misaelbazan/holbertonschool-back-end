@@ -26,19 +26,19 @@ def save_to_csv(filename, employee_todos):
 
 
 def main():
-    id = sys.argv[1]
+    USER_ID = sys.argv[1]
     try:
         # Fetching user data
-        user_url = f"https://jsonplaceholder.typicode.com/users/{id}"
+        user_url = f"https://jsonplaceholder.typicode.com/users/{USER_ID}"
         user_response = requests.get(user_url)
         user_data = user_response.json()
 
         # Fetching todos data
-        todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={id}"
+        todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={USER_ID}"
         todos_response = requests.get(todos_url)
         todos_data = todos_response.json()
 
-        EMPLOYEE_NAME = user_data['name']
+        USERNAME = user_data['name']
         completed_tasks = list_completed_tasks(todos_data)
         NUMBER_OF_DONE_TASKS = len(completed_tasks)
         TOTAL_NUMBER_OF_TASKS = len(todos_data)
@@ -47,11 +47,11 @@ def main():
         todos_titles = get_todo_list_titles(todos_data)
         employee_todos = []
         for index in range(0, TOTAL_NUMBER_OF_TASKS):
-            record = [str(id), EMPLOYEE_NAME, str(
+            record = [str(USER_ID), USERNAME, str(
                 todos_list_status[index]), todos_titles[index]]
             employee_todos.append(record)
 
-        csv_file_name = f"{id}.csv"
+        csv_file_name = f"{USER_ID}.csv"
 
         save_to_csv(csv_file_name, employee_todos)
 
