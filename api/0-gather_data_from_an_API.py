@@ -31,5 +31,5 @@ try:
          ({number_completed_tasks}/{total_tasks}):")
     for task in completed_tasks:
         print(f"\t{task['title']}")
-except Error as e:
+except requests.RequestException as e:
     print("Error happened during execution", e)
