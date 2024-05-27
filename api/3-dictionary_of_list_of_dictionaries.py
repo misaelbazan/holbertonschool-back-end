@@ -39,7 +39,9 @@ def main():
             user_data = user_response.json()
 
             # Fetching todos data
-            todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={id}"
+            todos_url = (
+            f"https://jsonplaceholder.typicode.com/"
+            f"todos?userId={id}")
             todos_response = requests.get(todos_url)
             todos_data = todos_response.json()
 
@@ -70,7 +72,7 @@ def main():
             save_to_json(filename, todo_all_employees)
 
     except requests.RequestException as e:
-            print("Error happened during execution", e)
+        print("Error happened during execution", e)
 
 
 if __name__ == "__main__":
