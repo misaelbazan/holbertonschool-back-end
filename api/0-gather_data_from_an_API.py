@@ -22,7 +22,7 @@ try:
                 {employee_id}"
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
-    
+
     completed_tasks = list_completed_tasks(todos_data)
     number_completed_tasks = len(completed_tasks)
     total_tasks = len(todos_data)
@@ -30,6 +30,6 @@ try:
     print(f"Employee {user_data['name']} is done with tasks\
          ({number_completed_tasks}/{total_tasks}):")
     for task in completed_tasks:
-        print(f"\t{task['title']}") 
-except:
-    print("Error happened during execution")
+        print(f"\t{task['title']}")
+except Error as e:
+    print("Error happened during execution", e)
