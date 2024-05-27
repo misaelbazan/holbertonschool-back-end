@@ -28,8 +28,8 @@ def main():
         NUMBER_OF_DONE_TASKS = len(completed_tasks)
         TOTAL_NUMBER_OF_TASKS = len(todos_data)
 
-        print(f"Employee {EMPLOYEE_NAME} is done with tasks\
-            ({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
+        print(f"Employee {EMPLOYEE_NAME} is done with tasks"\
+              f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
         for task in completed_tasks:
             TASK_TITLE = task['title']
             print(f"\t{TASK_TITLE}")
