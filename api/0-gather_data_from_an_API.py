@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This module contains the script for the 0th task"""
 
 import requests
 import sys
