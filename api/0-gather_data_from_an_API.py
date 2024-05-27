@@ -8,8 +8,8 @@ def list_completed_tasks(todo_data):
   """Count n of completed tasks"""
   return [task for task in todo_data if task["completed"]]
 
-employee_id = sys.argv[1]
 try:
+  employee_id = sys.argv[1]
   # Fetching user data
   user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
   user_response = requests.get(user_url)
