@@ -50,7 +50,7 @@ def main():
 
         todos_list_status = todo_list_task_status(todos_data)
         todos_titles = get_todo_list_titles(todos_data)
-        
+ 
         employee_todos = {}
         todos_list = []
 
