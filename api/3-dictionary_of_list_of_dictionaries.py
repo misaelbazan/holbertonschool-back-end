@@ -40,8 +40,8 @@ def main():
 
             # Fetching todos data
             todos_url = (
-            f"https://jsonplaceholder.typicode.com/"
-            f"todos?userId={id}")
+                f"https://jsonplaceholder.typicode.com/"
+                f"todos?userId={id}")
             todos_response = requests.get(todos_url)
             todos_data = todos_response.json()
 
